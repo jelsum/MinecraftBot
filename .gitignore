@@ -1,3 +1,11 @@
+# Project specific gitignore
+# Minecraft
+game_server/
+
+# Configuration - commit .example instead
+config.json
+
+# Default GitHub Node gitignore
 # Logs
 logs
 *.log

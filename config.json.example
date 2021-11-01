@@ -1,0 +1,14 @@
+{
+    "prefix": "",
+    "token": "",
+    "game_jar": "",
+    "game_args": "",
+    "rcon_port": ,
+    "rcon_password": ,
+    "leveldat_path": "",
+    "playerdata_path" : "",
+    "admin_role_id": "",
+	"clientId": "",
+	"guildId": "",
+	"chat_relay_id": ""
+}
