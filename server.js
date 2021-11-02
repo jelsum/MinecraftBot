@@ -60,8 +60,21 @@ function list(interaction) {
 		});
 }
 
-function gamemode(interaction, mode, player) {
+function gamemode(interaction) {
+	const mode = interaction.options.getString('gamemode');
+	const player = interaction.options.getString('username');
 	server.rconConnection.send(`gamemode ${mode} ${player}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
+function banPlayer(interaction) {
+	const player = interaction.options.getString('username');
+	server.rconConnection.send(`ban ${player}`)
 		.then(result => {
 			interaction.reply({ content: result });
 		})
@@ -75,4 +88,6 @@ module.exports = {
 	stopServer,
 	list,
 	gamemode,
+	banPlayer,
+	server,
 };

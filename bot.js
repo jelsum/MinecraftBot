@@ -4,6 +4,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const config = require('./config.json');
 const fs = require('fs');
+let playerCount = 0;
 
 // Create a new Discord Client instance with relevant intents
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -86,7 +87,21 @@ client.on('interactionCreate', async interaction => {
 // When the client is logged in and ready, start the server
 client.once('ready', () => {
 	console.log('ready');
-	client.user.setActivity('Use /list to see who\'s online!');
+	updateActivity();
+});
+
+server.server.javaServer.on('login', () => {
+	playerCount++;
+	updateActivity();
+});
+
+server.server.javaServer.on('logout', () => {
+	playerCount--;
+	updateActivity();
 });
 
 client.login(config.token);
+
+function updateActivity() {
+	client.user.setActivity(`${playerCount} players online.`);
+}

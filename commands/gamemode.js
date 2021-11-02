@@ -19,8 +19,6 @@ module.exports = {
 				.setDescription('The target player')
 				.setRequired(true)),
 	async execute(interaction, server) {
-		const gamemode = interaction.options.getString('gamemode');
-		const username = interaction.options.getString('username');
-		server.gamemode(interaction, gamemode, username);
+		server.gamemode(interaction);
 	},
 };
