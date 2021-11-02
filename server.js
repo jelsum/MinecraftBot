@@ -43,8 +43,6 @@ function startServer(interaction) {
 		console.log('Error starting server: ' + err);
 		interaction.reply({ content: 'Server already running.' });
 	}
-	console.log('Starting server...');
-	server.start();
 }
 
 function stopServer() {
@@ -62,8 +60,19 @@ function list(interaction) {
 		});
 }
 
+function gamemode(interaction, mode, player) {
+	server.rconConnection.send(`gamemode ${mode} ${player}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	startServer,
 	stopServer,
 	list,
+	gamemode,
 };
