@@ -10,5 +10,42 @@
     "admin_role_id": "",
 	"clientId": "",
 	"guildId": "",
-	"chat_relay_id": ""
+	"chat_relay_id": "",
+	"essentials": {
+		"motd": {
+			"enabled": true,
+			"firstTime": "Welcome to the server, ${player}!",
+			"text": "Welcome back ${player}!"
+		},
+		"starterKit": {
+			"enabled": false,
+			"items": ["iron_pickaxe", "iron_shovel", "iron_axe", "iron_sword", "red_bed", "bread 32"]
+		},
+		"home": {
+			"enabled": true,
+			"amount": 3
+		},
+		"spawn": true,
+		"warp": {
+			"enabled": true,
+			"opOnly": true
+		},
+		"tpa": true,
+		"back": true,
+		"day": {
+			"enabled": false,
+			"percent": 50
+		},
+		"night": {
+			"enabled": false,
+			"percent": 50
+		},
+		"weather": {
+			"enabled": false,
+			"percent": 50
+		}
+	},
+	"command": {
+		"prefix": "!"
+	}
 }

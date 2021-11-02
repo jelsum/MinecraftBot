@@ -14,19 +14,8 @@ const server = new ScriptServer({
 		port: config.rcon_port,
 		password: config.rcon_password,
 	},
-	essentials: {
-		warp: {
-			opOnly: true,
-		},
-		starterKit: {
-			enabled: config.essentials.starterKit.enabled,
-			items: config.essentials.starterKit.items,
-		},
-		home: {
-			enabled: config.essentials.home.enabled,
-			amount: config.essentials.home.amount,
-		},
-	},
+	essentials: config.essentials,
+	command: config.command,
 });
 
 useEvent(server.javaServer);
