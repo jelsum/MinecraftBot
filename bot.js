@@ -87,8 +87,11 @@ client.on('interactionCreate', async interaction => {
 // When the client is logged in and ready, start the server
 client.once('ready', () => {
 	console.log('ready');
+	client.user.setStatus('dnd');
 	updateActivity();
 });
+
+// Server events. When something happens on the server, we want something to happen in discord as well. THIS CAN BE USED TO PING ENDPOINTS IN THE FUTURE.
 
 server.server.javaServer.on('login', () => {
 	playerCount++;
@@ -98,6 +101,14 @@ server.server.javaServer.on('login', () => {
 server.server.javaServer.on('logout', () => {
 	playerCount--;
 	updateActivity();
+});
+
+server.server.javaServer.on('start', () => {
+	client.user.setStatus('online');
+});
+
+server.server.javaServer.on('stop', () => {
+	client.user.setStatus('dnd');
 });
 
 client.login(config.token);

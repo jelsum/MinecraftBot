@@ -83,11 +83,24 @@ function banPlayer(interaction) {
 		});
 }
 
+function unbanPlayer(interaction) {
+	const player = interaction.options.getString('username');
+	server.rconConnection.send(`pardon ${player}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
+
 module.exports = {
+	server,
 	startServer,
 	stopServer,
 	list,
 	gamemode,
 	banPlayer,
-	server,
+	unbanPlayer,
 };
