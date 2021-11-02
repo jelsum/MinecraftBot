@@ -5,6 +5,9 @@ game_server/
 # Configuration - commit .example instead
 config.json
 
+# Extra
+json/
+
 # Default GitHub Node gitignore
 # Logs
 logs

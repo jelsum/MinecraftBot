@@ -25,6 +25,12 @@ function startServer() {
 	server.start();
 }
 
+function stopServer() {
+	console.log('Stopping Server');
+	server.stop();
+}
+
 module.exports = {
 	startServer,
+	stopServer,
 };
