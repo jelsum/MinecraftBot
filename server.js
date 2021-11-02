@@ -14,6 +14,19 @@ const server = new ScriptServer({
 		port: config.rcon_port,
 		password: config.rcon_password,
 	},
+	essentials: {
+		warp: {
+			opOnly: true,
+		},
+		starterKit: {
+			enabled: config.essentials.starterKit.enabled,
+			items: config.essentials.starterKit.items,
+		},
+		home: {
+			enabled: config.essentials.home.enabled,
+			amount: config.essentials.home.amount,
+		},
+	},
 });
 
 useEvent(server.javaServer);
@@ -27,10 +40,21 @@ function startServer() {
 
 function stopServer() {
 	console.log('Stopping Server');
-	server.stop();
+	server.rconConnection.send('stop');
+}
+
+function list(interaction) {
+	server.rconConnection.send('list')
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(err => {
+			interaction.reply({ content: err });
+		});
 }
 
 module.exports = {
 	startServer,
 	stopServer,
+	list,
 };
