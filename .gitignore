@@ -1,6 +1,7 @@
 # Project specific gitignore
 # Minecraft
-game_server/
+game_server/*
+!game_server/.gitkeep
 
 # Configuration - commit .example instead
 config.json
