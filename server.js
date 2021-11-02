@@ -33,7 +33,16 @@ useEvent(server.javaServer);
 useUtil(server.rconConnection);
 useEssentials(server);
 
-function startServer() {
+function startServer(interaction) {
+	try {
+		server.start();
+		console.log('Starting server...');
+		interaction.reply({ content: 'Starting server.' });
+	}
+	catch (err) {
+		console.log('Error starting server: ' + err);
+		interaction.reply({ content: 'Server already running.' });
+	}
 	console.log('Starting server...');
 	server.start();
 }

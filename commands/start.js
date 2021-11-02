@@ -7,7 +7,6 @@ module.exports = {
 		.setName('start')
 		.setDescription('Starts the Minecraft Server'),
 	async execute(interaction, server) {
-		server.startServer();
-		interaction.reply({ content: 'Starting server.' });
+		server.startServer(interaction);
 	},
 };
