@@ -8,6 +8,7 @@
 - [ ] Give
 - [x] Whitelist add/remove
 - [x] Chat relay
+- [x] Send raw command
 
 ### Web App
 - [ ] everything lol

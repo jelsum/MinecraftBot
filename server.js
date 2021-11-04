@@ -143,6 +143,17 @@ function whitelist(interaction) {
 		});
 }
 
+function sendRaw(interaction) {
+	const cmd = interaction.options.getString('command');
+	server.rconConnection.send(cmd)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -156,4 +167,5 @@ module.exports = {
 	weather,
 	time,
 	whitelist,
+	sendRaw,
 };
