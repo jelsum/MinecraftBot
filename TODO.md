@@ -6,9 +6,11 @@
 - [ ] Teleport OFFLINE player
 - [ ] Weather/Time
 - [ ] Give
+- [ ] Chat relay
 
 ### Web App
 - [ ] everything lol
+- [ ] send commands to game through rcon connection
 
 ### General
 - [ ] readme
