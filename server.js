@@ -154,6 +154,19 @@ function sendRaw(interaction) {
 		});
 }
 
+function give(interaction) {
+	const player = interaction.options.getString('player');
+	const item = interaction.options.getString('item');
+	const count = interaction.options.getInteger('count') || 1;
+	server.rconConnection.send(`give ${player} ${item} ${count}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -168,4 +181,5 @@ module.exports = {
 	time,
 	whitelist,
 	sendRaw,
+	give,
 };

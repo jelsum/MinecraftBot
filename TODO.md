@@ -5,7 +5,7 @@
 - [x] Teleport online player to coordinates
 - [ ] Teleport OFFLINE player - might need to port nbt reading to https://www.npmjs.com/package/prismarine-nbt
 - [x] Weather/Time
-- [ ] Give
+- [x] Give
 - [x] Whitelist add/remove
 - [x] Chat relay
 - [x] Send raw command
