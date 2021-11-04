@@ -2,7 +2,8 @@
 - [x] Finish porting old commands to new version
 - [ ] Update gamemode command to use players on the server
 - [x] Update player location to use online player detection method
-- [ ] Teleport online player
+- [x] Teleport online player to another player
+- [ ] Teleport online player to coordinates
 - [ ] Teleport OFFLINE player
 - [ ] Weather/Time
 - [ ] Give

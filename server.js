@@ -82,6 +82,18 @@ function unbanPlayer(interaction) {
 		});
 }
 
+function teleportToPlayer(interaction) {
+	const target = interaction.options.getString('target');
+	const destination = interaction.options.getString('destination');
+	server.rconConnection.send(`teleport ${target} ${destination}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -90,4 +102,5 @@ module.exports = {
 	gamemode,
 	banPlayer,
 	unbanPlayer,
+	teleportToPlayer,
 };
