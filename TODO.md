@@ -6,7 +6,7 @@
 - [ ] Teleport OFFLINE player
 - [ ] Weather/Time
 - [ ] Give
-- [ ] Chat relay
+- [x] Chat relay
 
 ### Web App
 - [ ] everything lol
