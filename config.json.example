@@ -10,7 +10,7 @@
     "admin_role_id": "",
 	"clientId": "",
 	"guildId": "",
-	"chat_relay_id": "",
+	"relay_channel_id": "",
 	"essentials": {
 		"motd": {
 			"enabled": true,

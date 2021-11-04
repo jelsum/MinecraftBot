@@ -7,7 +7,7 @@ const fs = require('fs');
 let playerCount = 0;
 
 // Create a new Discord Client instance with relevant intents
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], disableMentions: 'everyone' });
 
 // Array to hold commands for registration
 const commands = [];
@@ -84,23 +84,28 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+let relayChannel;
 // When the client is logged in and ready, start the server
 client.once('ready', () => {
 	console.log('ready');
 	client.user.setStatus('dnd');
 	updateActivity();
+	client.channels.fetch(config.relay_channel_id)
+		.then(channel => relayChannel = channel);
 });
 
 // Server events. When something happens on the server, we want something to happen in discord as well. THIS CAN BE USED TO PING ENDPOINTS IN THE FUTURE.
 
-server.server.javaServer.on('login', () => {
+server.server.javaServer.on('login', (e) => {
 	playerCount++;
 	updateActivity();
+	relayChannel.send({ content: `${e.player} has joined the server!` });
 });
 
-server.server.javaServer.on('logout', () => {
+server.server.javaServer.on('logout', (e) => {
 	playerCount--;
 	updateActivity();
+	relayChannel.send({ content: `${e.player} has left the server!` });
 });
 
 server.server.javaServer.on('start', () => {
@@ -109,6 +114,18 @@ server.server.javaServer.on('start', () => {
 
 server.server.javaServer.on('stop', () => {
 	client.user.setStatus('dnd');
+});
+
+// Chat relay events.
+
+server.server.javaServer.on('chat', (e) => {
+	relayChannel.send({ content: `<${e.player}> ${e.message}` });
+});
+
+client.on('messageCreate', (message) => {
+	if (message.channelId != config.relay_channel_id) return;
+	if (message.author.bot) return;
+	server.server.rconConnection.send(`tellraw @a ["",{"text":"[Discord] ","color":"dark_aqua"},"${message.author.username}: ","${message.content}"]`);
 });
 
 client.login(config.token);
