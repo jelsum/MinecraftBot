@@ -94,6 +94,21 @@ function teleportToPlayer(interaction) {
 		});
 }
 
+function teleportToCoordinate(interaction) {
+	const target = interaction.options.getString('target');
+	const x = interaction.options.getInteger('x');
+	const y = interaction.options.getInteger('y');
+	const z = interaction.options.getInteger('z');
+
+	server.rconConnection.send(`teleport ${target} ${x} ${y} ${z}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -103,4 +118,5 @@ module.exports = {
 	banPlayer,
 	unbanPlayer,
 	teleportToPlayer,
+	teleportToCoordinate,
 };
