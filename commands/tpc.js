@@ -5,7 +5,7 @@ module.exports = {
 	requireAdmin: true,
 	data: new SlashCommandBuilder()
 		.setName('tpc')
-		.setDescription('Teleport a player to another player.')
+		.setDescription('Teleport a player to specific co-ordinates.')
 		.addStringOption(option =>
 			option.setName('target')
 				.setDescription('The player to teleport')
