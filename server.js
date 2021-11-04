@@ -109,6 +109,28 @@ function teleportToCoordinate(interaction) {
 		});
 }
 
+function weather(interaction) {
+	const weatherType = interaction.options.getString('weather');
+	server.rconConnection.send(`weather ${weatherType}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
+function time(interaction) {
+	const timeType = interaction.options.getString('time');
+	server.rconConnection.send(`time set ${timeType}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -119,4 +141,6 @@ module.exports = {
 	unbanPlayer,
 	teleportToPlayer,
 	teleportToCoordinate,
+	weather,
+	time,
 };

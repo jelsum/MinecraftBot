@@ -3,9 +3,10 @@
 - [x] Update player location to use online player detection method
 - [x] Teleport online player to another player
 - [x] Teleport online player to coordinates
-- [ ] Teleport OFFLINE player
-- [ ] Weather/Time
+- [ ] Teleport OFFLINE player - might need to port nbt reading to https://www.npmjs.com/package/prismarine-nbt
+- [x] Weather/Time
 - [ ] Give
+- [ ] Whitelist add/remove
 - [x] Chat relay
 
 ### Web App
