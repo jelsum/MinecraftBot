@@ -131,6 +131,18 @@ function time(interaction) {
 		});
 }
 
+function whitelist(interaction) {
+	const type = interaction.options.getString('type');
+	const player = interaction.options.getString('player');
+	server.rconConnection.send(`whitelist ${type} ${player}`)
+		.then(result => {
+			interaction.reply({ content: result });
+		})
+		.catch(error => {
+			interaction.reply({ content: error });
+		});
+}
+
 module.exports = {
 	server,
 	startServer,
@@ -143,4 +155,5 @@ module.exports = {
 	teleportToCoordinate,
 	weather,
 	time,
+	whitelist,
 };

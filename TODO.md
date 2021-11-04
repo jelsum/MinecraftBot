@@ -6,7 +6,7 @@
 - [ ] Teleport OFFLINE player - might need to port nbt reading to https://www.npmjs.com/package/prismarine-nbt
 - [x] Weather/Time
 - [ ] Give
-- [ ] Whitelist add/remove
+- [x] Whitelist add/remove
 - [x] Chat relay
 
 ### Web App
