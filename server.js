@@ -82,7 +82,6 @@ function unbanPlayer(interaction) {
 		});
 }
 
-
 module.exports = {
 	server,
 	startServer,
