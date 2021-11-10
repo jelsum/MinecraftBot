@@ -122,6 +122,10 @@ server.server.javaServer.on('chat', (e) => {
 	relayChannel.send({ content: `<${e.player}> ${e.message}` });
 });
 
+server.server.javaServer.on('achievement', (e) => {
+	relayChannel.send({ content: `${e.player} has made the advancement [${e.achievement}]` });
+});
+
 client.on('messageCreate', (message) => {
 	if (message.channelId != config.relay_channel_id) return;
 	if (message.author.bot) return;

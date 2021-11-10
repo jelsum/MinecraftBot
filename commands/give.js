@@ -4,7 +4,7 @@ module.exports = {
 	requireServer: true,
 	requireAdmin: true,
 	data: new SlashCommandBuilder()
-		.setName('Give')
+		.setName('give')
 		.setDescription('Give a player an item')
 		.addStringOption(option =>
 			option.setName('player')
