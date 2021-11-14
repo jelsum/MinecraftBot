@@ -108,14 +108,6 @@ server.server.javaServer.on('logout', (e) => {
 	relayChannel.send({ content: `${e.player} has left the server!` });
 });
 
-server.server.javaServer.on('start', () => {
-	client.user.setStatus('online');
-});
-
-server.server.javaServer.on('stop', () => {
-	client.user.setStatus('dnd');
-});
-
 // Chat relay events.
 
 server.server.javaServer.on('chat', (e) => {
@@ -128,6 +120,12 @@ server.server.javaServer.on('achievement', (e) => {
 
 server.server.rconConnection.on('connected', () => {
 	relayChannel.send({ content: 'Server has started.' });
+	client.user.setStatus('online');
+});
+
+server.secer.rconConnection.on('disconnected', () => {
+	relayChannel.send({ content: 'Server has stopped.' });
+	client.user.setStatus('dnd');
 });
 
 client.on('messageCreate', (message) => {
