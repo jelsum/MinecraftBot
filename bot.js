@@ -123,7 +123,7 @@ server.server.rconConnection.on('connected', () => {
 	client.user.setStatus('online');
 });
 
-server.secer.rconConnection.on('disconnected', () => {
+server.server.rconConnection.on('disconnected', () => {
 	relayChannel.send({ content: 'Server has stopped.' });
 	client.user.setStatus('dnd');
 });
