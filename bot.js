@@ -120,6 +120,7 @@ server.server.javaServer.on('achievement', (e) => {
 
 server.server.rconConnection.on('connected', () => {
 	relayChannel.send({ content: 'Server has started.' });
+	playerCount = 0;
 	client.user.setStatus('online');
 });
 
