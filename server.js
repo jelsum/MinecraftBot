@@ -7,8 +7,8 @@ const config = require('./config.json');
 const server = new ScriptServer({
 	javaServer: {
 		path: './game_server',
-		jar: config.jar,
-		args: [config.args],
+		jar: config.game_jar,
+		args: [config.game_args],
 	},
 	rconConnection: {
 		port: config.rcon_port,
